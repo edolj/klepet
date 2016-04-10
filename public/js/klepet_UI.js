@@ -74,6 +74,13 @@ $(document).ready(function() {
     $('#kanal').text(trenutniVzdevek + " @ " + trenutniKanal);
     $('#sporocila').append(divElementHtmlTekst('Sprememba kanala.'));
   });
+  
+  socket.on('dregljaj', function(vzdevek) {
+      //console.log("hello i am here");
+      $('#vsebina').jrumble();
+      $('#vsebina').trigger('startRumble');
+      var cas = setTimeout(function(){$('#vsebina').trigger('stopRumble');}, 1500);
+  });
 
   socket.on('sporocilo', function (sporocilo) {
     addSlike(sporocilo.besedilo);
